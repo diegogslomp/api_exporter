@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+
+  prometheus:
+    image: prom/prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_storage:/prometheus
+    # ports:
+    #   - target: 9090
+    #     published: 9090
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  grafana:
+    image: grafana/grafana-oss
+    restart: unless-stopped
+    volumes:
+      - grafana_storage:/var/lib/grafana
+    ports:
+      - target: 3000
+        published: 3000
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+
+  exporter:
+    image: diegogslomp/sitrad_exporter
+    restart: unless-stopped
+    build:
+      context: .
+    volumes:
+      - ./.env:/code/.env
+    # ports:
+    #   - target: 8083
+    #     published: 8083
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+volumes:
+  prometheus_storage:
+  grafana_storage:

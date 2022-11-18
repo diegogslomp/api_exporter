@@ -39,7 +39,7 @@ class API:
         )
 
     @staticmethod
-    def get_sensors() -> dict:
+    def get_sensors() -> list[dict]:
         """Query API and filter sensors"""
         response = API.get_response(f"instruments")
 

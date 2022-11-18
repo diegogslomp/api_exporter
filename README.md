@@ -12,15 +12,18 @@ git clone --single-branch https://github.com/diegogslomp/sitrad_exporter
 cd sitrad_exporter
 pip install -r requirements.txt
 cp example.env .env
-# Edit .env vars
+# Edit .env file variables
 python sitrad_exporter.py
 ```
 
 
-2. Run as docker image (create [.env](https://raw.githubusercontent.com/diegogslomp/sitrad_exporter/master/example.env) file):
+1. Run as docker image:
 ```
-docker run -d \
-  -v $(pwd)/.env:/code/.env \
+docker run \
+  -e API_HOST="10.0.0.10" \
+  -e API_PORT="8002" \
+  -e API_USER="admin" \
+  -e API_PASSWORD="SecretTempP4ss!" \
   -p 8083:8083 \
   --name exporter diegogslomp/sitrad_exporter
 ```
@@ -33,7 +36,7 @@ docker run -d \
 git clone --single-branch https://github.com/diegogslomp/sitrad_exporter
 cd sitrad_exporter
 cp example.env .env
-# Edit .env vars
+# Edit .env file variables
 docker compose up -d
 docker compose logs -f
 ```

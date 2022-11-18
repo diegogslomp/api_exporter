@@ -16,8 +16,7 @@ cp example.env .env
 python sitrad_exporter.py
 ```
 
-
-1. Run as docker image:
+2. Run as docker image:
 ```
 docker run \
   -e API_HOST="10.0.0.10" \

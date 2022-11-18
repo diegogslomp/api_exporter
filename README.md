@@ -30,7 +30,7 @@ docker run \
 - 2.1. Access http://localhost:8083 for metrics
 
 
-3. Or run `Grafana - Prometheus - Exporter` docker stack (Ctrl+c to exit logs):
+3. Or run Grafana + Prometheus + Exporter docker stack (Ctrl+c to exit logs):
 ```
 git clone --single-branch https://github.com/diegogslomp/sitrad_exporter
 cd sitrad_exporter

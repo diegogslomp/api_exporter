@@ -17,7 +17,7 @@ python sitrad_exporter.py
 ```
 
 
-2. Run as docker image:
+2. Run as docker image (create [.env](https://raw.githubusercontent.com/diegogslomp/sitrad_exporter/master/example.env) file):
 ```
 docker run -d \
   -v $(pwd)/.env:/code/.env \

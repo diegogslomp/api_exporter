@@ -1,9 +1,9 @@
-# SITRAD API Temperature Exporter for Prometheus
+# sitrad_exporter
 
-Export sensor temperatures from SITRAD API for Prometheus
+SITRAD API Temperature Exporter for Prometheus
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diegogslomp/sitrad_exporter/master/img.png" height=220 style="max-height: 440px;"/>
+  <img src="https://raw.githubusercontent.com/diegogslomp/sitrad_exporter/master/img.png" style="max-height: 440px;"/>
 </p>
 
 1. Run exporter locally:

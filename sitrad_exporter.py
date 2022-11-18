@@ -70,17 +70,11 @@ def process_request() -> None:
         sensors.append(Sensor(sensor))
 
     while True:
-
         try:
-
-            response = API.get_response(f"instruments/{id}/values")
-
             for sensor in sensors:
                 sensor.gauge.set(API.get_temperature(sensor.id))
-
         except Exception as ex:
             print(ex)
-
         finally:
             time.sleep(60)
 
@@ -89,13 +83,9 @@ if __name__ == "__main__":
 
     # Disable cert warnings
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
     # Load enviroment variables from .env file
     load_dotenv()
 
     # Start up the server to expose the metrics.
     start_http_server(8083)
-
     process_request()
-
-    # print(API.get_sensors())

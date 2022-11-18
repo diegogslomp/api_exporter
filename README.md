@@ -41,4 +41,6 @@ docker compose up -d
 docker compose logs -f
 ```
 
-- 3.1. Access http://localhost:3000 for Grafana dashboard (user:admin pass:admin)
+- 3.1. Access http://localhost:3000 (user:admin pass:admin)
+- 3.2. Add Prometheus http://prometheus:9090 as Data Source
+- 3.3. Explore metrics and create dashboards

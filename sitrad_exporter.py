@@ -24,7 +24,7 @@ class API:
     """Sitrad API request methods"""
 
     @staticmethod
-    def get_results(path) -> dict:
+    def get_results(path) -> list[dict]:
         """Return results from API"""
         host = os.getenv("API_HOST")
         port = os.getenv("API_PORT")
@@ -51,7 +51,7 @@ class API:
 def process_request() -> None:
     """Set Prometheus values based on API response every 60 seconds"""
     sensors = []
-    for sensor in API.get_results(f"instruments"):
+    for sensor in API.get_results("instruments"):
         sensors.append(Sensor(sensor))
     while True:
         try:

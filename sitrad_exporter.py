@@ -53,7 +53,7 @@ class API:
         return API.get_results(f"instruments")
 
 
-def process_request() -> None:
+def loop() -> None:
     """Load prometheus sensor gauges and update from API every 60 seconds"""
     sensors = [Sensor(sensor) for sensor in API.get_sensors()]
     while True:
@@ -73,4 +73,4 @@ if __name__ == "__main__":
     load_dotenv()
     # Start up the server to expose the metrics.
     start_http_server(8083)
-    process_request()
+    loop()

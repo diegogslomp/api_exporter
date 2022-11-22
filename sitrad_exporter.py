@@ -24,36 +24,32 @@ class API:
     """Sitrad API request methods"""
 
     @staticmethod
-    def get_response(path) -> object:
-        """Return response from API"""
+    def get_results(path) -> dict:
+        """Return results from API"""
         host = os.getenv("API_HOST")
         port = os.getenv("API_PORT")
         user = os.getenv("API_USER")
         password = os.getenv("API_PASSWORD")
         url = f"https://{host}:{port}/api/v1/{path}"
-        
         response = requests.get(
             url,
             auth=(user, password),
             verify=False,
         )
         response.raise_for_status()
-        return response
+        return response.json()["results"]
 
     @staticmethod
     def get_sensors() -> list[dict]:
         """Query API and filter sensors"""
-        response = API.get_response(f"instruments")
-        return [
-            {"id": result["id"], "name": result["name"]}
-            for result in response.json()["results"]
-        ]
+        results = API.get_results(f"instruments")
+        return [{"id": result["id"], "name": result["name"]} for result in results]
 
     @staticmethod
     def get_temperature(sensor_id: int) -> float:
         """Query API and filter sensor temperature value"""
-        response = API.get_response(f"instruments/{sensor_id}/values")
-        for result in response.json()["results"]:
+        results = API.get_results(f"instruments/{sensor_id}/values")
+        for result in results:
             if result["code"] == "Temperature":
                 return result["values"][0]["value"]
 

@@ -41,18 +41,21 @@ class API:
 
     @staticmethod
     def get_temperature(sensor_id: int) -> float:
-        """Query API and filter sensor temperature value"""
+        """Query API and return sensor temperature value"""
         results = API.get_results(f"instruments/{sensor_id}/values")
         for result in results:
             if result["code"] == "Temperature":
                 return result["values"][0]["value"]
 
+    @staticmethod
+    def get_sensors() -> list[dict]:
+        """Query API and return sensor list"""
+        return API.get_results(f"instruments")
+
 
 def process_request() -> None:
-    """Set Prometheus values based on API response every 60 seconds"""
-    sensors = []
-    for sensor in API.get_results("instruments"):
-        sensors.append(Sensor(sensor))
+    """Load prometheus sensor gauges and update from API every 60 seconds"""
+    sensors = [Sensor(sensor) for sensor in API.get_sensors()]
     while True:
         try:
             for sensor in sensors:

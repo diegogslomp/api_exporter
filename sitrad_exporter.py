@@ -16,8 +16,8 @@ class Sensor:
         self.gauge = Gauge(self.get_gauge_name(), f"{self.name}")
 
     def get_gauge_name(self) -> str:
-        sanitized_name = self.name.lstrip().lower().replace(" ", "_")
-        return f"{sanitized_name}_temperature_api_requests"
+        prefix = self.name.lstrip().lower().replace(" ", "_")
+        return f"{prefix}_temperature_api_requests"
 
 
 class API:

@@ -41,9 +41,8 @@ class API:
 
     @staticmethod
     def get_sensors() -> list[dict]:
-        """Query API and filter sensors"""
-        results = API.get_results(f"instruments")
-        return [{"id": result["id"], "name": result["name"]} for result in results]
+        """Query API and return sensors"""
+        return API.get_results(f"instruments")
 
     @staticmethod
     def get_temperature(sensor_id: int) -> float:

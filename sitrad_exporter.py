@@ -24,7 +24,7 @@ class API:
     """Sitrad API request methods"""
 
     @staticmethod
-    def get_results(path) -> list[dict]:
+    def get_results(path: str) -> list[dict]:
         """Return results from API"""
         host = os.getenv("API_HOST")
         port = os.getenv("API_PORT")
@@ -50,7 +50,7 @@ class API:
     @staticmethod
     def get_sensors() -> list[dict]:
         """Query API and return sensor list"""
-        return API.get_results(f"instruments")
+        return API.get_results("instruments")
 
 
 def loop() -> None:

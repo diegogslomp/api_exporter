@@ -26,10 +26,10 @@ class API:
     @staticmethod
     def get_results(path: str) -> list[dict]:
         """Return results from API"""
-        host = os.getenv("API_HOST")
-        port = os.getenv("API_PORT")
-        user = os.getenv("API_USER")
-        password = os.getenv("API_PASSWORD")
+        host = os.environ["API_HOST"]
+        port = os.environ["API_PORT"]
+        user = os.environ["API_USER"]
+        password = os.environ["API_PASSWORD"]
         url = f"https://{host}:{port}/api/v1/{path}"
         response = requests.get(
             url,

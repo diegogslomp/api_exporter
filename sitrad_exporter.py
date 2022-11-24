@@ -2,7 +2,6 @@ from prometheus_client import start_http_server, Gauge
 from dotenv import load_dotenv
 import requests
 import urllib3
-import logging
 import time
 import os
 
@@ -21,12 +20,9 @@ class Sensor:
 
     def set_gauge_value(self) -> None:
         try:
-            temperature = API.get_temperature(self.id)
-        except Exception as e:
-            logging.error(e)
+            self.gauge.set(API.get_temperature(self.id))
+        except:
             self.gauge.clear()
-        else:
-            self.gauge.set(temperature)
 
 
 class API:

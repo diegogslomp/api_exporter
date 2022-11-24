@@ -19,6 +19,15 @@ class Sensor:
         prefix = self.name.lstrip().lower().replace(" ", "_")
         return f"{prefix}_temperature_api_requests"
 
+    def set_gauge_value(self):
+        try:
+            temperature = API.get_temperature(self.id)
+        except Exception as e:
+            logging.error(e)
+            self.gauge.clear()
+        else:
+            self.gauge.set(temperature)
+
 
 class API:
     """Sitrad API request methods"""
@@ -57,13 +66,8 @@ def loop() -> None:
     """Load prometheus sensor gauges and update from API every 60 seconds"""
     sensors = [Sensor(sensor) for sensor in API.get_sensors()]
     while True:
-        try:
-            for sensor in sensors:
-                sensor.gauge.set(API.get_temperature(sensor.id))
-        except Exception as ex:
-            logging.error(ex)
-        finally:
-            time.sleep(60)
+        [sensor.set_gauge_value() for sensor in sensors]
+        time.sleep(60)
 
 
 if __name__ == "__main__":

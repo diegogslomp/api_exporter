@@ -19,7 +19,7 @@ class Sensor:
         prefix = self.name.lstrip().lower().replace(" ", "_")
         return f"{prefix}_temperature_api_requests"
 
-    def set_gauge_value(self):
+    def set_gauge_value(self) -> None:
         try:
             temperature = API.get_temperature(self.id)
         except Exception as e:

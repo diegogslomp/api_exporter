@@ -1,6 +1,6 @@
 # api_exporter
 
-API Temperature Exporter for Prometheus. Read temperatures from API and set Prometheus Gauges every minute.
+API Temperature Exporter for Prometheus. Read temperatures and set Prometheus Gauges every minute.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/diegogslomp/api_exporter/master/img.png" style="max-height: 440px;"/>

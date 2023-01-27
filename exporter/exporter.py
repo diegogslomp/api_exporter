@@ -1,11 +1,11 @@
 from prometheus_client import start_http_server
-import time
+from sensor import generate_list
 import logging
-import sensor
+import time
 
 
 def loop() -> None:
-    sensors = sensor.generate_list()
+    sensors = generate_list()
     while True:
         [sensor.set_gauge_value() for sensor in sensors]
         time.sleep(60)

@@ -1,6 +1,6 @@
-import os
 import requests
 import urllib3
+import os
 
 
 def get_api_results(path: str) -> list[dict]:

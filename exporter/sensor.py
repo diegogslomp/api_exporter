@@ -1,5 +1,5 @@
-import api
 import gauge
+import api
 
 
 class Sensor:

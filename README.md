@@ -3,7 +3,7 @@
 API Temperature Exporter for Prometheus. Read temperatures and set Prometheus Gauges every minute.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diegogslomp/api_exporter/master/img.png" style="max-height: 440px;"/>
+  <img src="https://raw.githubusercontent.com/diegogslomp/api_exporter/master/docker/img.png" style="max-height: 440px;"/>
 </p>
 
 1. Run locally:

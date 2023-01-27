@@ -13,7 +13,7 @@ services:
       - "--web.console.templates=/usr/share/prometheus/consoles"
 
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - .docker/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_storage:/prometheus
     # ports:
     #   - target: 9090
@@ -43,8 +43,9 @@ services:
     restart: unless-stopped
     build:
       context: .
-    volumes:
-      - ./.env:/code/.env
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - ./.env
     # ports:
     #   - target: 8083
     #     published: 8083

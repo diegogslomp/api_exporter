@@ -38,7 +38,7 @@ docker run \
 ```
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter
-cp example.env .env
+cp .example.env .env
 # Edit .env file variables
 docker compose up -d
 docker compose logs -f

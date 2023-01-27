@@ -8,7 +8,7 @@ class Sensor:
         self.name = name
         self.gauge = gauge.new(self.name)
 
-    def set_gauge_value(self):
+    def set_gauge_value(self) -> None:
         gauge.set_value(self.gauge, self.id)
 
 

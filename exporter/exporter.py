@@ -8,7 +8,7 @@ from sensor import Sensor
 logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.DEBUG)
 
 
-def mainloop() -> None:
+def loop() -> None:
     sensors = [
         Sensor(api_sensor["id"], api_sensor["name"]) for api_sensor in api.get_sensors()
     ]
@@ -20,4 +20,4 @@ def mainloop() -> None:
 if __name__ == "__main__":
     # Start up the server to expose the metrics.
     start_http_server(8083)
-    mainloop()
+    loop()

@@ -15,9 +15,9 @@ def create_new_gauge(sensor_name: str) -> Gauge:
 
 
 class Sensor:
-    def __init__(self, id: int, name: str):
-        self.id = id
-        self.name = name
+    def __init__(self, sensor: dict):
+        self.id = sensor["id"]
+        self.name = sensor["name"]
         self.gauge = create_new_gauge(self.name)
 
 
@@ -58,7 +58,7 @@ def get_sensors() -> list[dict]:
 
 
 def mainloop() -> None:
-    sensors = [Sensor(sensor["id"], sensor["name"]) for sensor in get_sensors()]
+    sensors = [Sensor(api_sensor) for api_sensor in get_sensors()]
     while True:
         [set_gauge_value(sensor) for sensor in sensors]
         time.sleep(60)

@@ -11,7 +11,7 @@ API Temperature Exporter for Prometheus. Read temperatures from API and set Prom
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter
 # Copy and edit enviroment variables file
-cp example.env .env
+cp .example.env .env
 # Install requirements in a virtual environment
 python -m pipenv install -r requirements.txt
 # Run virtualenv loading .env vars

@@ -23,7 +23,7 @@ cp .example.env .env
 pip install -r requirements
 
 # Run script
-python api_exporter.py
+python exporter/exporter.py
 ```
 
 2. Or run as docker image:

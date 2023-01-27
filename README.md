@@ -6,16 +6,22 @@ API Temperature Exporter for Prometheus. Read temperatures and set Prometheus Ga
   <img src="https://raw.githubusercontent.com/diegogslomp/api_exporter/master/docker/img.png" style="max-height: 440px;"/>
 </p>
 
+
 1. Run locally:
 ```
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter
+
+# Create and activate a virtual environment (optional)
+python -m pipenv install
+python -m pipenv shell
+
 # Copy and edit enviroment variables file
 cp .example.env .env
-# Install requirements in a virtual environment
-python -m pipenv install -r requirements.txt
-# Run virtualenv loading .env vars
-python -m pipenv shell
+
+# Install dependencies
+pip install -r requirements
+
 # Run script
 python api_exporter.py
 ```

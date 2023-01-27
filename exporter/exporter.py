@@ -9,7 +9,9 @@ logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.DEBUG)
 
 
 def mainloop() -> None:
-    sensors = [Sensor(api_sensor) for api_sensor in api.get_sensors()]
+    sensors = [
+        Sensor(api_sensor["id"], api_sensor["name"]) for api_sensor in api.get_sensors()
+    ]
     while True:
         [gauge.set_value(sensor.gauge, sensor.id) for sensor in sensors]
         time.sleep(60)

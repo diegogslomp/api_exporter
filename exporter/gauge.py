@@ -1,6 +1,6 @@
 from prometheus_client import Gauge
-import logging
 import api
+import logging
 
 
 def new(sensor_name: str) -> Gauge:

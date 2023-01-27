@@ -1,19 +1,15 @@
 from prometheus_client import start_http_server
 import logging
 import time
-import api
-import gauge
-from sensor import Sensor
+import sensor
 
 logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.DEBUG)
 
 
 def loop() -> None:
-    sensors = [
-        Sensor(api_sensor["id"], api_sensor["name"]) for api_sensor in api.get_sensors()
-    ]
+    sensors = sensor.generate_list()
     while True:
-        [gauge.set_value(sensor.gauge, sensor.id) for sensor in sensors]
+        [sensor.set_gauge_value() for sensor in sensors]
         time.sleep(60)
 
 

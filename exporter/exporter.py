@@ -1,9 +1,7 @@
 from prometheus_client import start_http_server
-import logging
 import time
+import logging
 import sensor
-
-logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.DEBUG)
 
 
 def loop() -> None:
@@ -14,6 +12,8 @@ def loop() -> None:
 
 
 if __name__ == "__main__":
+    format = "%(levelname)s: %(message)s"
+    logging.basicConfig(format=format, level=logging.DEBUG)
     # Start up the server to expose the metrics.
     start_http_server(8083)
     loop()

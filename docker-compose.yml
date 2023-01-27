@@ -39,7 +39,7 @@ services:
           memory: 2G
 
   exporter:
-    image: diegogslomp/sitrad_exporter
+    image: diegogslomp/api_exporter
     restart: unless-stopped
     build:
       context: .

@@ -1,22 +1,26 @@
-# sitrad_exporter
+# api_exporter
 
-Sitrad API Temperature Exporter for Prometheus
+API Temperature Exporter for Prometheus. This script read temperatures from API and set Prometheus Gauges every minute.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/diegogslomp/sitrad_exporter/master/img.png" style="max-height: 440px;"/>
+  <img src="https://raw.githubusercontent.com/diegogslomp/api_exporter/master/img.png" style="max-height: 440px;"/>
 </p>
 
-1. Run exporter locally:
+1. Run locally:
 ```
-git clone --single-branch https://github.com/diegogslomp/sitrad_exporter
-cd sitrad_exporter
-pip install -r requirements.txt
+git clone --single-branch https://github.com/diegogslomp/api_exporter
+cd api_exporter
+# Copy and edit enviroment variables file
 cp example.env .env
-# Edit .env file variables
-python sitrad_exporter.py
+# Install requirements in a virtual environment
+python -m pipenv install -r requirements.txt
+# Run virtualenv loading .env vars
+python -m pipenv shell
+# Run script
+python api_exporter.py
 ```
 
-2. Run as docker image:
+2. Or run as docker image:
 ```
 docker run \
   -e API_HOST="10.0.0.10" \
@@ -24,7 +28,7 @@ docker run \
   -e API_USER="admin" \
   -e API_PASSWORD="SecretTempP4ss!" \
   -p 8083:8083 \
-  --name exporter diegogslomp/sitrad_exporter
+  --name exporter diegogslomp/api_exporter
 ```
 
 - 2.1. Access http://localhost:8083 for metrics
@@ -32,8 +36,8 @@ docker run \
 
 3. Or run Grafana + Prometheus + Exporter docker stack (Ctrl+c to exit logs):
 ```
-git clone --single-branch https://github.com/diegogslomp/sitrad_exporter
-cd sitrad_exporter
+git clone --single-branch https://github.com/diegogslomp/api_exporter
+cd api_exporter
 cp example.env .env
 # Edit .env file variables
 docker compose up -d

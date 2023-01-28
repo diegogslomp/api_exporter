@@ -12,5 +12,5 @@ class Sensor:
         gauge.set_value(self.gauge, self.id)
 
 
-def generate_list() -> list[Sensor]:
+def generate_sensor_list() -> list[Sensor]:
     return [Sensor(sensor["id"], sensor["name"]) for sensor in api.get_sensors()]

@@ -4,7 +4,7 @@ import api
 
 
 def new(sensor_name: str) -> Gauge:
-    prefix = sensor_name.lstrip().lower().replace(" ", "_")
+    prefix = sensor_name.strip().lower().replace(" ", "_")
     gauge_name = f"{prefix}_temperature_api_requests"
     return Gauge(gauge_name, sensor_name)
 

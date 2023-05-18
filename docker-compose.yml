@@ -13,7 +13,7 @@ services:
       - "--web.console.templates=/usr/share/prometheus/consoles"
 
     volumes:
-      - .docker/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_storage:/prometheus
     # ports:
     #   - target: 9090

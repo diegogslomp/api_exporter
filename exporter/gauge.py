@@ -16,4 +16,4 @@ def set_value(gauge: Gauge, sensor_id: int) -> None:
         msg = f"Error getting sensor {sensor_id} temp. Gauge cleared."
         logging.warning(msg)
         logging.debug(e)
-        gauge.clear()
+        gauge.set(-1)

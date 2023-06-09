@@ -12,9 +12,12 @@ class Sensor:
     def set_gauge_value(self) -> None:
         gauge.set_value(self.gauge, self.id)
 
+    def __str__(self):
+        return f"{self.id}: {self.name}"
+
 
 def generate_sensor_list() -> list[Sensor]:
     sensors = [Sensor(sensor["id"], sensor["name"]) for sensor in api.get_sensors()]
     logging.info("Sensors found:")
-    [logging.info(f"{sensor.id}: {sensor.name}") for sensor in sensors]
+    [logging.info(sensor) for sensor in sensors]
     return sensors

@@ -1,4 +1,5 @@
 from prometheus_client import Gauge
+from urllib3.exceptions import HTTPError
 import logging
 import api
 
@@ -10,10 +11,12 @@ def new(sensor_name: str) -> Gauge:
 
 
 def set_value(gauge: Gauge, sensor_id: int) -> None:
+    value = 0.0
     try:
-        gauge.set(api.get_temperature(sensor_id))
-    except Exception as e:
+        value = api.get_temperature(sensor_id)
+    except HTTPError as e:
         msg = f"Error getting sensor {sensor_id} temp. Gauge cleared."
         logging.warning(msg)
         logging.debug(e)
-        gauge.set(0.0)
+    finally:
+        gauge.set(value)

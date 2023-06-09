@@ -1,5 +1,6 @@
-import gauge
 import api
+import gauge
+import logging
 
 
 class Sensor:
@@ -13,4 +14,7 @@ class Sensor:
 
 
 def generate_sensor_list() -> list[Sensor]:
-    return [Sensor(sensor["id"], sensor["name"]) for sensor in api.get_sensors()]
+    sensors = [Sensor(sensor["id"], sensor["name"]) for sensor in api.get_sensors()]
+    logging.info("Sensors found:")
+    [logging.info(f"{sensor.id}: {sensor.name}") for sensor in sensors]
+    return sensors

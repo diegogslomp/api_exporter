@@ -1,5 +1,6 @@
 import requests
 import urllib3
+import logging
 import os
 
 
@@ -28,4 +29,5 @@ def get_temperature(sensor_id: int) -> float:
 
 
 def get_sensors() -> list[dict]:
+    logging.info("Reading sensors from API..")
     return get_api_results("instruments")

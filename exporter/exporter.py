@@ -4,6 +4,7 @@ import logging
 import time
 import os
 
+
 def loop() -> None:
     sensors = generate_sensor_list()
     while True:
@@ -13,8 +14,9 @@ def loop() -> None:
 
 if __name__ == "__main__":
     format = "%(levelname)s: %(message)s"
-    log_level = os.getenv('LOG_LEVEL', 'INFO')
+    log_level = os.getenv("LOG_LEVEL", "INFO")
+    port = int(os.getenv("EXPORTER_PORT", 8083))
     logging.basicConfig(format=format, level=log_level)
-    # Start up the server to expose the metrics.
-    start_http_server(8083)
+    logging.info(f"Starting web server at {port} port..")
+    start_http_server(port)
     loop()

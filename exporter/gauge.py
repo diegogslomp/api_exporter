@@ -1,5 +1,5 @@
 from prometheus_client import Gauge
-from urllib3.exceptions import HTTPError
+from requests.exceptions import HTTPError
 import logging
 import api
 

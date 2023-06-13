@@ -12,22 +12,34 @@ def get_api_results(path: str) -> list[dict]:
     user = os.environ["API_USER"]
     password = os.environ["API_PASSWORD"]
     url = f"https://{host}:{port}/api/v1/{path}"
-    response = requests.get(
-        url,
-        auth=(user, password),
-        verify=False,
-    )
-    response.raise_for_status()
-    return response.json()["results"]
+    results = []
+    try:
+        response = requests.get(
+            url,
+            auth=(user, password),
+            verify=False,
+        )
+        response.raise_for_status()
+        results = response.json()["results"]
+    except Exception as e:
+        logging.warning("Error getting API results")
+        logging.debug(e)
+    finally:
+        return results
 
 
 def get_temperature(sensor_id: int) -> float:
     results = get_api_results(f"instruments/{sensor_id}/values")
+    if not results:
+        logging.error(f"Error getting {sensor_id} temp. Gauge cleared")
+        return 0.0
     for result in results:
         if result["code"] == "Temperature":
             return result["values"][0]["value"]
 
 
 def get_sensors() -> list[dict]:
-    logging.info("Reading sensors from API..")
-    return get_api_results("instruments")
+    results = get_api_results("instruments")
+    if not results:
+        logging.warning("Error getting sensors")
+    return results

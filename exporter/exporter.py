@@ -6,7 +6,16 @@ import os
 
 
 def loop() -> None:
-    sensors = generate_sensor_list()
+    while True:
+        sensors = generate_sensor_list()
+        if sensors:
+            break
+        else:
+            seconds = 15
+            msg = f"No sensors to iterate. Waiting {seconds} seconds"
+            logging.warning(msg)
+            time.sleep(seconds)
+
     while True:
         [sensor.set_gauge_value() for sensor in sensors]
         time.sleep(60)
@@ -15,8 +24,10 @@ def loop() -> None:
 if __name__ == "__main__":
     format = "%(levelname)s: %(message)s"
     log_level = os.getenv("LOG_LEVEL", "INFO")
-    port = int(os.getenv("EXPORTER_PORT", 8083))
     logging.basicConfig(format=format, level=log_level)
-    logging.info(f"Starting web server at {port} port..")
+
+    port = int(os.getenv("EXPORTER_PORT", 8083))
+    logging.info(f"Starting web server at port {port}")
     start_http_server(port)
+
     loop()

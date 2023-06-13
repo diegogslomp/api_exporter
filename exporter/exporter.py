@@ -11,8 +11,8 @@ def loop() -> None:
         if sensors:
             break
         else:
-            seconds = 15
-            msg = f"No sensors to iterate. Waiting {seconds} seconds"
+            seconds = 30
+            msg = f"No sensors to iterate, waiting {seconds} seconds"
             logging.warning(msg)
             time.sleep(seconds)
 

@@ -19,6 +19,6 @@ class Sensor:
 def generate_sensor_list() -> list[Sensor]:
     api_sensors = api.get_sensors()
     sensors = [Sensor(sensor["id"], sensor["name"]) for sensor in api_sensors]
-    msg = "Sensors: " + ', '.join(str(sensor) for sensor in sensors)
+    msg = "Sensors: " + ", ".join(str(sensor) for sensor in sensors)
     logging.info(msg)
     return sensors

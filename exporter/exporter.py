@@ -6,16 +6,7 @@ import os
 
 
 def loop() -> None:
-    while True:
-        sensors = generate_sensor_list()
-        if sensors:
-            break
-        else:
-            seconds = 30
-            msg = f"No sensors to iterate, waiting {seconds} seconds"
-            logging.warning(msg)
-            time.sleep(seconds)
-
+    sensors = generate_sensor_list()
     while True:
         [sensor.set_gauge_value() for sensor in sensors]
         time.sleep(60)

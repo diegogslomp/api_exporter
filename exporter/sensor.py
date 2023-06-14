@@ -17,14 +17,8 @@ class Sensor:
 
 
 def generate_sensor_list() -> list[Sensor]:
-    sensors = []
     api_sensors = api.get_sensors()
-    try:
-        sensors = [Sensor(sensor["id"], sensor["name"]) for sensor in api_sensors]
-        msg = "Sensors: " + str([sensor.__str__() for sensor in sensors])
-        logging.info(msg)
-    except Exception as e:
-        logging.warning("Error creating sensor list")
-        logging.debug(e)
-    finally:
-        return sensors
+    sensors = [Sensor(sensor["id"], sensor["name"]) for sensor in api_sensors]
+    msg = "Sensors: " + str([sensor.__str__() for sensor in sensors])
+    logging.info(msg)
+    return sensors

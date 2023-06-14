@@ -8,10 +8,10 @@ class TestGauges(unittest.TestCase):
         [sensor.set_gauge_value() for sensor in sensors]
 
     def test_offline_sensor(self):
-        offline_sensor = Sensor(id=999, name="Offline Sensor")
-        offline_sensor.set_gauge_value()
+        offline = Sensor(id=999, name="Offline Sensor")
+        offline.set_gauge_value()
         msg = "Offline sensors should be zero"
-        self.assertEqual(offline_sensor.gauge._value.get(), 0.0, msg)
+        self.assertEqual(offline.gauge._value.get(), 0.0, msg)
 
 
 if __name__ == "__main__":

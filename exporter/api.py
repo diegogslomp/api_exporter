@@ -1,11 +1,10 @@
 import requests
 import urllib3
-import logging
 import os
 
 
 def get_api_results(path: str) -> list[dict]:
-    # Disable cert warnings
+    # Disable certifcate warnings
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     host = os.environ["API_HOST"]
     port = os.environ["API_PORT"]

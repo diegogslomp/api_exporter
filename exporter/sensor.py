@@ -12,7 +12,7 @@ class Sensor:
     def set_gauge_value(self) -> None:
         gauge.set_value(self.gauge, self.id)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.id}: {self.name}"
 
 

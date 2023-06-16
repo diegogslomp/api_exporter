@@ -14,8 +14,8 @@ def loop() -> None:
 
 if __name__ == "__main__":
     format = "%(levelname)s: %(message)s"
-    log_level = os.getenv("LOG_LEVEL", "INFO")
-    logging.basicConfig(format=format, level=log_level)
+    level = os.getenv("LOG_LEVEL", "INFO")
+    logging.basicConfig(format=format, level=level)
 
     port = int(os.getenv("EXPORTER_PORT", 8083))
     logging.info(f"Starting web server at port {port}")

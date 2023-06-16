@@ -12,7 +12,7 @@ def get_api_results(path: str) -> list[dict]:
     password = os.environ["API_PASSWORD"]
     url = f"https://{host}:{port}/api/v1/{path}"
     response = requests.get(
-        url,
+        url=url,
         auth=(user, password),
         verify=False,
     )

@@ -8,7 +8,7 @@ import os
 def loop() -> None:
     sensors = generate_sensor_list()
     while True:
-        [sensor.set_gauge_value() for sensor in sensors]
+        [sensor.set_gauge() for sensor in sensors]
         time.sleep(60)
 
 

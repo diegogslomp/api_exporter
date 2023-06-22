@@ -5,8 +5,8 @@ import logging
 
 def new_gauge(sensor_name: str) -> Gauge:
     prefix = sensor_name.strip().lower().replace(" ", "_")
-    gauge_name = f"{prefix}_temperature_api_requests"
-    return Gauge(gauge_name, sensor_name)
+    name = f"{prefix}_temperature_api_requests"
+    return Gauge(name=name, documentation=sensor_name)
 
 
 def get_temperature_and_set_gauge(sensor_id: int, gauge: Gauge) -> None:

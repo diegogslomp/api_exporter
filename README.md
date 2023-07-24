@@ -7,7 +7,7 @@ API Exporter for [Prometheus](https://prometheus.io/). Read temperatures and set
 </p>
 
 
-1. Run locally:
+1. Dev:
 ```
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter
@@ -26,7 +26,7 @@ pip install -r requirements
 python exporter/exporter.py
 ```
 
-2. Run as docker image:
+2. Docker image:
 ```
 docker run \
   -e API_HOST="10.0.0.10" \
@@ -40,7 +40,7 @@ docker run \
 - 2.1. Access http://localhost:8083 for metrics
 
 
-3. Run as docker stack (Ctrl+c to exit logs):
+3. Docker compose (Ctrl+c to exit logs):
 ```
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter

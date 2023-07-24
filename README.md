@@ -40,7 +40,7 @@ docker run \
 - 2.1. Access http://localhost:8083 for metrics
 
 
-3. Run Grafana + Prometheus + Exporter docker stack (Ctrl+c to exit logs):
+3. Run as docker stack (Ctrl+c to exit logs):
 ```
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter

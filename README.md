@@ -26,7 +26,7 @@ pip install -r requirements
 python exporter/exporter.py
 ```
 
-2. Or run as docker image:
+2. Run as docker image:
 ```
 docker run \
   -e API_HOST="10.0.0.10" \
@@ -40,7 +40,7 @@ docker run \
 - 2.1. Access http://localhost:8083 for metrics
 
 
-3. Or run Grafana + Prometheus + Exporter docker stack (Ctrl+c to exit logs):
+3. Run Grafana + Prometheus + Exporter docker stack (Ctrl+c to exit logs):
 ```
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter

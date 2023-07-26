@@ -7,7 +7,7 @@ API Exporter for [Prometheus](https://prometheus.io/). Read temperatures and set
 </p>
 
 
-1. Dev
+1. Local development
 ```
 git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter

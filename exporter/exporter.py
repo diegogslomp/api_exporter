@@ -13,7 +13,7 @@ def loop() -> None:
 
 
 if __name__ == "__main__":
-    format = "%(levelname)s: %(message)s"
+    format = "%(asctime)s %(levelname)s: %(message)s"
     level = os.getenv("LOG_LEVEL", "INFO")
     logging.basicConfig(format=format, level=level)
 

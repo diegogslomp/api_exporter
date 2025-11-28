@@ -1,5 +1,5 @@
-from gauge import new_gauge, get_temperature_and_set_gauge
 from requests.exceptions import HTTPError
+from prometheus_client import Gauge
 import logging
 import api
 
@@ -8,10 +8,22 @@ class Sensor:
     def __init__(self, id: int, name: str):
         self.id = id
         self.name = name
-        self.gauge = new_gauge(self.name)
+        self.gauge = self.new_gauge()
+
+    def new_gauge(self) -> Gauge:
+        prefix = self.name.strip().lower().replace(" ", "_")
+        name = f"{prefix}_temperature_api_requests"
+        return Gauge(name=name, documentation=self.name)
 
     def set_gauge(self) -> None:
-        get_temperature_and_set_gauge(self.id, self.gauge)
+        value = 0.0
+        try:
+            value = api.get_temperature(self.id)
+        except Exception as e:
+            logging.error(e)
+            logging.warning(f"Gauge {self.gauge._name} cleared")
+        finally:
+            self.gauge.set(value)
 
     def __str__(self) -> str:
         return f"{self.id}: {self.name}"

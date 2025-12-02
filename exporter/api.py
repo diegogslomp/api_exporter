@@ -5,14 +5,15 @@ import os
 
 dotenv.load_dotenv()
 
-def get_api_results(path: str) -> list[dict]:
+
+def get_api_results(url_suffix: str) -> list[dict]:
     # Disable certifcate warnings
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     host = os.environ["API_HOST"]
     port = os.environ["API_PORT"]
     user = os.environ["API_USER"]
     password = os.environ["API_PASSWORD"]
-    url = f"https://{host}:{port}/api/v1/{path}"
+    url = f"https://{host}:{port}/api/v1/{url_suffix}"
     response = requests.get(
         url=url,
         auth=(user, password),

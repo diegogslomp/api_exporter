@@ -7,6 +7,7 @@ import os
 
 dotenv.load_dotenv()
 
+
 def loop() -> None:
     gauges = generate_gauges()
     while True:

@@ -1,14 +1,14 @@
 from prometheus_client import start_http_server
-from sensor import generate_sensor_list
+from gauge import generate_gauges
 import logging
 import time
 import os
 
 
 def loop() -> None:
-    sensors = generate_sensor_list()
+    gauges = generate_gauges()
     while True:
-        [sensor.set_gauge() for sensor in sensors]
+        [gauge.set_value() for gauge in gauges]
         time.sleep(60)
 
 
@@ -20,5 +20,4 @@ if __name__ == "__main__":
     port = int(os.getenv("EXPORTER_PORT", 8083))
     logging.info(f"Starting web server at port {port}")
     start_http_server(port)
-
     loop()

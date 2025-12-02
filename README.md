@@ -13,8 +13,8 @@ git clone --single-branch https://github.com/diegogslomp/api_exporter
 cd api_exporter
 
 # Create and activate a virtual environment (optional)
-python -m pipenv install
-python -m pipenv shell
+python -m venv venv
+source venv/bin/activate
 
 # Copy and edit enviroment variables file
 cp .example.env .env

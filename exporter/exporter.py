@@ -1,9 +1,11 @@
 from prometheus_client import start_http_server
 from gauge import generate_gauges
 import logging
+import dotenv
 import time
 import os
 
+dotenv.load_dotenv()
 
 def loop() -> None:
     gauges = generate_gauges()

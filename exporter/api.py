@@ -1,7 +1,9 @@
 import requests
 import urllib3
+import dotenv
 import os
 
+dotenv.load_dotenv()
 
 def get_api_results(path: str) -> list[dict]:
     # Disable certifcate warnings
